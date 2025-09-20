@@ -1,6 +1,6 @@
 import pytest
 from psycopg2 import OperationalError
-from database import get_db_connection
+from HMCTS_Task.database import get_db_connection
 
 def test_db_connection():
     try:
