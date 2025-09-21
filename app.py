@@ -16,13 +16,21 @@ def home():
 def static_files(filename):
     return send_from_directory("frontend", filename)
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    """Return JSON instead of HTML for unhandled exceptions."""
+    return jsonify({"error": str(e)}), 500
 
 
 @app.route("/api/tasks", methods=["POST"])
 def create_task():
     data = request.get_json()
-    if not data or "title" not in data or not data["title"].strip():
-        return jsonify({"error": "title is required"}), 400
+    if not data:
+        return jsonify({"error": "Request body must be JSON"}), 400
+    if "title" not in data or not data["title"].strip():
+        return jsonify({"error": "Title is required"}), 400
+    if "status" in data and data["status"] not in ["todo", "in_progress", "done"]:
+        return jsonify({"error": "Invalid status value"}), 400
 
     task_id = db.create_task(
         title=data["title"].strip(),
@@ -67,7 +75,9 @@ def get_task(task_id):
 def update_task(task_id):
     data = request.get_json()
     if not data or "status" not in data:
-        return jsonify({"error": "status is required"}), 400
+        return jsonify({"error": "Status is required"}), 400
+    if data["status"] not in ["todo", "in_progress", "done"]:
+        return jsonify({"error": "Invalid status value"}), 400
 
     updated = db.update_task_status(task_id, data["status"])
     if not updated:
