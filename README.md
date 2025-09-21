@@ -69,8 +69,10 @@ initialise_db()
 ## **Running the Application**
 
 **Start the Flask app:**
+
+While in the parent folder run:
 ```bash
-python app.py
+python -m HMCTS_Task.app
 ```
 
 **Visit in your browser:**

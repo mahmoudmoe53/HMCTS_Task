@@ -6,7 +6,7 @@ from HMCTS_Task.database import TaskDB
 def client():
     """Creates a test client and resets the database before each test."""
     task_db = TaskDB()
-    task_db.initialise_db()  # Reset tasks table
+    task_db.initialise_db()
     app.config["TESTING"] = True
     with app.test_client() as client:
         yield client
