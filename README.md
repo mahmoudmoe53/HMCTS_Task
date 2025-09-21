@@ -40,8 +40,8 @@ This project implements a lightweight task tracking system for HMCTS caseworkers
 
 1. **Clone the repository**
 ```bash
-git clone <your-repo-url>
-cd hmcts-tasks
+git clone https://github.com/mahmoudmoe53/HMCTS_Task.git
+cd HMCTS_Task
 ```
 
 2. **Install dependencies**
