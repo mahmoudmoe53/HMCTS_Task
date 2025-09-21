@@ -9,10 +9,11 @@ A simple task management system for caseworkers to create, view, update, and del
 2. [Technologies Used](#technologies-used)
 3. [Setup Instructions](#setup-instructions)
 4. [Running the Application](#running-the-application)
-5. [Testing](#testing)
-6. [API Endpoints](#api-endpoints)
-7. [Technical Decisions](#technical-decisions)
-8. [Future Enhancements](#future-enhancements)
+5. [Running with Docker](#running-with-docker)
+6. [Testing](#testing)
+7. [API Endpoints](#api-endpoints)
+8. [Technical Decisions](#technical-decisions)
+9. [Future Enhancements](#future-enhancements)
 
 ---
 
@@ -90,6 +91,31 @@ Mark tasks as done
 
 Delete tasks
 
+## **Running with Docker**
+
+**Build the Docker image:**
+```bash
+docker build -t hmcts-task-app .
+```
+
+**Run the container:**
+```bash
+docker run -p 5000:5000 --env-file .env hmcts-task-app
+```
+
+
+
+Note: Make sure the .env file is correctly set up so the Flask app can connect to PostgreSQL.
+
+**Visit in your browser:**
+
+http://localhost:5000/
+
+
+Optional: Connect to a separate PostgreSQL container by updating DATABASE_URL in .env to point to the container host.
+
+
+
 ## **Testing**
 
 **Run tests using pytest:**
@@ -102,12 +128,14 @@ tests/test_taskdb.py → tests database CRUD operations
 tests/test_app.py → tests API routes
 
 ## **API Endpoints**
-**Method**	**Route**	**Description**
-POST	/api/tasks	Create a new task
-GET	/api/tasks	Retrieve all tasks
-GET	/api/tasks/<id>	Retrieve a single task
-PATCH	/api/tasks/<id>	Update task status
-DELETE	/api/tasks/<id>	Delete a task
+| Method | Route           | Description           |
+|--------|-----------------|---------------------|
+| POST   | /api/tasks      | Create a new task   |
+| GET    | /api/tasks      | Retrieve all tasks  |
+| GET    | /api/tasks/<id> | Retrieve a single task |
+| PATCH  | /api/tasks/<id> | Update task status  |
+| DELETE | /api/tasks/<id> | Delete a task       |
+
 
 ## **Technical Decisions**
 

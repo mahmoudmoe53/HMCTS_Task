@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
-from HMCTS_Task.database import TaskDB
+from database import TaskDB
+
 
 app = Flask(__name__, static_folder="frontend", static_url_path="")
 
@@ -85,4 +86,4 @@ def delete_task(task_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
