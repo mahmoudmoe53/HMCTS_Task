@@ -123,9 +123,9 @@ Optional: Connect to a separate PostgreSQL container by updating DATABASE_URL in
 pytest
 ```
 
-tests/test_taskdb.py → tests database CRUD operations
+tests/test_database.py → tests database CRUD operations
 
-tests/test_app.py → tests API routes
+tests/test_api.py → tests API routes
 
 ## **API Endpoints**
 | Method | Route           | Description           |
@@ -151,23 +151,19 @@ tests/test_app.py → tests API routes
 
 **Trade-offs:**
 
-No ORM like SQLAlchemy → less abstraction but simpler for a small project.
-
-Vanilla JS frontend → minimal, but enough to meet requirements without introducing complexity.
-
-No authentication → out of scope for challenge, but can be added later for real-world deployment.
-
 ## **Future Enhancements**
 
-Edit task title and description via frontend.
+- Edit task title and description via the frontend for better task management.
+- Sort and filter tasks by status or due date for easier task tracking.
+- Integrate the **GOV.UK Design System** for a consistent, professional UI.
+- Add authentication and role-based access control for caseworkers.
+- **Containerized PostgreSQL:** Run PostgreSQL inside a Docker container alongside the Flask app for easier development and deployment.
+- **Kubernetes deployment:** Use Kubernetes to orchestrate containers, manage scaling, and ensure high availability.
+- **CI/CD Pipelines:** Implement automated testing, building, and deployment using GitHub Actions or Jenkins.
+- **Cloud Deployment:** Deploy the application to cloud platforms like AWS, Azure, or GCP for production, taking advantage of managed databases, container services, and load balancers.
+- Implement **automated backups and monitoring** for production databases and containers to ensure reliability.
+- Extend testing coverage with integration tests to ensure the frontend and backend work seamlessly together.
 
-Sort and filter tasks by status or due date.
-
-Integrate GOV.UK Design System for consistent UI.
-
-Add authentication for caseworkers.
-
-Deploy to Azure or containerize with Docker for production.
 
 Author: Mahmoud
 Submission for HMCTS Technical Test
