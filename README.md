@@ -79,7 +79,7 @@ python -m HMCTS_Task.app
 **Visit in your browser:**
 
 ```cpp
-http://127.0.0.1:5000/
+http://127.0.0.1:5001/
 ```
 **You can now**:
 
@@ -100,7 +100,7 @@ docker build -t hmcts-task-app .
 
 **Run the container:**
 ```bash
-docker run -p 5000:5000 --env-file .env hmcts-task-app
+docker run -p 5001:5001 --env-file .env hmcts-task-app
 ```
 
 
@@ -109,7 +109,7 @@ Note: Make sure the .env file is correctly set up so the Flask app can connect t
 
 **Visit in your browser:**
 
-http://localhost:5000/
+http://localhost:5001/
 
 
 Optional: Connect to a separate PostgreSQL container by updating DATABASE_URL in .env to point to the container host.

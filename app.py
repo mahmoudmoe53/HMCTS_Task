@@ -75,15 +75,21 @@ def get_task(task_id):
 def update_task(task_id):
     data = request.get_json()
     if not data or "status" not in data:
-        return jsonify({"error": "Status is required"}), 400
-    if data["status"] not in ["todo", "in_progress", "done"]:
-        return jsonify({"error": "Invalid status value"}), 400
+        return jsonify({"error": "status is required"}), 400
 
     updated = db.update_task_status(task_id, data["status"])
     if not updated:
         return jsonify({"error": "not found"}), 404
 
-    return jsonify({"id": updated[0], "status": data["status"]})
+    task = db.get_task(task_id)
+    return jsonify({
+        "id": task[0],
+        "title": task[1],
+        "description": task[2],
+        "status": task[3],
+        "due_date": task[4].isoformat() if task[4] else None
+    })
+
 
 
 @app.route("/api/tasks/<int:task_id>", methods=["DELETE"])
@@ -96,4 +102,4 @@ def delete_task(task_id):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)

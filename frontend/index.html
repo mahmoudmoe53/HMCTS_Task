@@ -3,23 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <title>HMCTS Task Manager</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<h1>Task Manager</h1>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-6">
+
+    <h1 class="text-3xl font-bold text-center text-blue-700 mb-6">
+      HMCTS Task Manager
+    </h1>
 
 
-<form id="task-form">
-  <input type="text" id="title" placeholder="Task Title" required>
-  <input type="text" id="description" placeholder="Description (optional)">
-  <input type="text" id="status" placeholder="Status (default: todo)">
-  <input type="datetime-local" id="due_date">
-  <button type="submit">Add Task</button>
+
+
+<form id="task-form" class="flex flex-col gap-3 mb-6">
+  <input
+    type="text"
+    id="title"
+    placeholder="Enter a new task..."
+    class="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+  >
+
+
+  <input
+    type="text"
+    id="description"
+    placeholder="Description (optional)"
+    class="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+  >
+
+
+  <select id="status" class="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
+    <option value="todo" selected>To Do</option>
+    <option value="in_progress">In Progress</option>
+    <option value="done">Done</option>
+</select>
+
+
+
+  <input
+    type="date"
+    id="due_date"
+    class="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+  >
+
+  <button
+    type="submit"
+    class="px-5 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition"
+  >
+    Add Task
+  </button>
 </form>
 
 
-<ul id="task-list"></ul>
+      <div id="task-list" class="space-y-3 max-h-96 overflow-y-auto pr-2">
+          </div>
 
-<script src="script.js"></script>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
