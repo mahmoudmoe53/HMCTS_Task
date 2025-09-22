@@ -149,7 +149,6 @@ tests/test_api.py → tests API routes
 
 **Testing:** Pytest for both database and API ensures reliable functionality before deployment.
 
-**Trade-offs:**
 
 ## **Future Enhancements**
 
